@@ -1,8 +1,14 @@
 <p>fetchusers works!</p>
 <p>{{ content | json}}</p>
 
-<h3>user</h3>
-<p>{{ content.id}}</p>
-<p>{{ content.firstName}}</p>
-<p>{{ content.lastName}}</p>
-<p>{{ content.username}}</p>
+<ul>
+    <li *ngFor ="let user of content">
+      <p>ID >> {{user.id}}</p>  
+      <p>FirstName >> {{user.firstName}}</p>
+      <p>LasstName >> {{user.lastName}}</p>
+      <p>Username >> {{user.username}}</p>
+      <p>Level >> {{user.level}}</p>
+
+        
+    </li>
+</ul>

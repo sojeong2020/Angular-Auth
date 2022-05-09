@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { UserService } from '../_services/user.service';
 
 @Component({
@@ -14,7 +15,8 @@ content? : any;
   constructor(private userService: UserService) { 
     this.userService.fetchUsers().subscribe( result =>{
       console.log(result,"result!!!")
-      this.content = result[0]
+      this.content = result
+       
     });
   }
 
