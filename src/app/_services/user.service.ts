@@ -17,7 +17,10 @@ export class UserService {
 
   fetchUsers(): Observable<any>{
     return this.http.get( API_URL);
-    
+  }
+
+  fetchUser(id: any):Observable<any>{
+    return this.http.get( API_URL + `/${id}`);
   }
   
   }

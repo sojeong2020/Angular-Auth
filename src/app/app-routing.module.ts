@@ -6,8 +6,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FetchusersComponent } from './fetchusers/fetchusers.component';
+import { FetchuserComponent } from './fetchuser/fetchuser.component';
+
 
 const routes: Routes = [
+  { path: 'fetchusers/:id', component: FetchuserComponent },
   { path: 'fetchusers', component: FetchusersComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

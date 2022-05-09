@@ -16,6 +16,7 @@ import { FetchusersComponent } from './fetchusers/fetchusers.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FetchuserComponent } from './fetchuser/fetchuser.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ProfileComponent,
     RegisterComponent,
     FetchusersComponent,
+    FetchuserComponent,
     
   ],
   imports: [
