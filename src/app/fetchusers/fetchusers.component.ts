@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
 import { UserService } from '../_services/user.service';
+
 
 @Component({
   selector: 'app-fetchusers',
@@ -13,6 +13,7 @@ content? : any;
 
 
   constructor(private userService: UserService) { 
+    
     this.userService.fetchUsers().subscribe( result =>{
       console.log(result,"result!!!")
       this.content = result

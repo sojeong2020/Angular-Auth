@@ -11,7 +11,8 @@ export class FetchuserComponent implements OnInit {
   singleUser: any ;
 
   constructor(public userService: UserService,
-              private actRoute: ActivatedRoute) {
+              private actRoute: ActivatedRoute,
+              ) {
 
                 let id = this.actRoute.snapshot.paramMap.get('id');
                 console.log(id,"id!!")
