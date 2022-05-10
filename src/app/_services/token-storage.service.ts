@@ -11,6 +11,11 @@ export class TokenStorageService {
 
   constructor() { }
 
+  get isAuthenticated(): boolean {
+    let authToken = this.getToken()
+    return authToken !== null ? true: false;
+  }
+
   signOut(): void {
     window.sessionStorage.clear();
   }
@@ -19,6 +24,7 @@ export class TokenStorageService {
    window.sessionStorage.removeItem(TOKEN_KEY);
    window.sessionStorage.setItem(TOKEN_KEY, token);
   }
+
   public getToken(): string | null {
      let gettoken = window.sessionStorage.getItem(TOKEN_KEY);
      console.log(gettoken,"<<<<<gettoken")
@@ -29,6 +35,7 @@ export class TokenStorageService {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
+
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     console.log(user,"user!!")
