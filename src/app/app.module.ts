@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -14,8 +15,6 @@ import { RegisterComponent } from './register/register.component';
 import { FetchusersComponent } from './fetchusers/fetchusers.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import { FetchuserComponent } from './fetchuser/fetchuser.component';
 
 @NgModule({
@@ -35,8 +34,7 @@ import { FetchuserComponent } from './fetchuser/fetchuser.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatToolbarModule
+    AngularMaterialModule 
    
   ],
   providers: [

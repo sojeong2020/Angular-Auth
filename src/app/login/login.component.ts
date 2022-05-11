@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 
@@ -10,17 +12,18 @@ import { TokenStorageService } from '../_services/token-storage.service';
 
 export class LoginComponent implements OnInit {
 
-  form: any = {
-    username: null,
-    password: null
-  };
+  form = new FormGroup({
+    username: new FormControl(null, Validators.required),
+    password: new FormControl(null, Validators.required),
+  });
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
   constructor(private authService: AuthService, 
-              private tokenStorage: TokenStorageService) { }
+              private tokenStorage: TokenStorageService,
+              private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -28,17 +31,25 @@ export class LoginComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
-  
-  onSubmit(): void {
-    const { username, password } = this.form;
-    this.authService.login(username, password).subscribe({
+
+submitForm() {
+    if (this.form.invalid) {
+      return;
+    }
+    this.authService
+    .login(this.form.get('username')?.value, this.form.get('password')?.value)    
+    .subscribe({
       next: data => {
         this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        //navigate to route and refresh (reload and redirect!!)
+        this.router.navigateByUrl('/home')
+        .then(()=>{
+          window.location.reload();
+        })
       },
       error: err => {
         this.errorMessage = err.error.message;
@@ -46,7 +57,5 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-  reloadPage(): void {
-    window.location.reload();
-  }
+  
 }

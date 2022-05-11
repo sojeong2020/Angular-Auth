@@ -1,0 +1,7 @@
+.form-container {
+    max-width: 800px;
+}
+.form{
+    display: flex; 
+    justify-content: center
+}
