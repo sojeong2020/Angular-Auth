@@ -1,34 +1,18 @@
-<div>
-  
-
-  <mat-toolbar>
-    <a href="/home" routerLink="home">Home </a>
-    
-    <span class="example-spacer"></span>
-    <ul *ngIf="!isLoggedIn">
-      <li class="nav-item">
-        <a href="/register" routerLink="register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login"  routerLink="login">Login</a>
-      </li>
-    </ul>
-
-    <ul *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile"  routerLink="profile">Profile{{ username }}</a>
-      </li>
-      <li class="nav-item">
-        <a href="/fetchusers" routerLink="fetchusers">Fetch users</a>
-      </li>
-      <li class="nav-item">
-        <a href (click)="logout()">LogOut</a>
-      </li>
-    </ul>
-    
+  <mat-toolbar color="primary">      
+        <a mat-button [routerLink]="'/home'">Home </a>
+        <div>
+        <div *ngIf="!isLoggedIn">
+        <a mat-button [routerLink]="'/register'">Sign Up </a>
+        <a mat-button [routerLink]="'/login'"> Login </a>
+        </div>
+        <div *ngIf="isLoggedIn">
+        <a mat-button [routerLink]="'/profile'">Current User </a>
+        <a mat-button [routerLink]="'/fetchusers'">Users </a>
+        <a mat-button (click)="logout()">LogOut</a>
+       </div>
+      </div>
   </mat-toolbar>
 
   <div>
     <router-outlet></router-outlet>
   </div>
-</div>
